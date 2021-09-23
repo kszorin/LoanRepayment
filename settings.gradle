@@ -2,6 +2,8 @@ rootProject.name = "LoanRepayment"
 include(
 	':app',
 	':loan-impl',
+	':parameters-api',
 )
 
 project(':loan-impl').projectDir = file('loan/impl')
+project(':parameters-api').projectDir = file('parameters/api')
