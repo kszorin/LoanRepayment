@@ -1,7 +1,9 @@
 rootProject.name = "LoanRepayment"
 include(
 	':app',
+	':feature-parameters',
 	':shared-loan',
 )
 
+project(':feature-parameters').projectDir = file('feature-parameters')
 project(':shared-loan').projectDir = file('shared-loan')
