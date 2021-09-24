@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-	compileSdkVersion 30
+	compileSdkVersion 31
 	buildToolsVersion "30.0.3"
 
 	defaultConfig {
 		applicationId "ru.kszorin.loanrepayment"
 		minSdkVersion 23
-		targetSdkVersion 30
+		targetSdkVersion 31
 		versionCode 1
 		versionName "1.0"
 
@@ -30,6 +30,13 @@ android {
 	kotlinOptions {
 		jvmTarget = JavaVersion.VERSION_11.toString()
 	}
+	buildFeatures {
+		// Enables Jetpack Compose for this module
+		compose true
+	}
+	composeOptions {
+		kotlinCompilerExtensionVersion '1.0.2'
+	}
 }
 
 dependencies {
@@ -38,6 +45,23 @@ dependencies {
 	implementation 'androidx.core:core-ktx:1.6.0'
 	implementation 'androidx.appcompat:appcompat:1.3.1'
 	implementation 'com.google.android.material:material:1.4.0'
+
+	implementation 'androidx.compose.ui:ui:1.0.2'
+	// Tooling support (Previews, etc.)
+	implementation 'androidx.compose.ui:ui-tooling:1.0.2'
+	// Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
+	implementation 'androidx.compose.foundation:foundation:1.0.2'
+	// Material Design
+	implementation 'androidx.compose.material:material:1.0.2'
+	// Material design icons
+	implementation 'androidx.compose.material:material-icons-core:1.0.2'
+	implementation 'androidx.compose.material:material-icons-extended:1.0.2'
+	// Integration with activities
+	implementation 'androidx.activity:activity-compose:1.3.1'
+	// Integration with ViewModels
+	implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.4.0-beta01'
+	// Integration with observables
+	implementation 'androidx.compose.runtime:runtime-livedata:1.0.2'
 
 	//modules
 	implementation project(path: ':feature-parameters')
