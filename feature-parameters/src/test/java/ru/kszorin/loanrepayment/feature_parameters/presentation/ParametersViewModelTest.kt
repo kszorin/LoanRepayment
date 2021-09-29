@@ -2,6 +2,14 @@ package ru.kszorin.loanrepayment.feature_parameters.presentation
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.ObsoleteCoroutinesApi
+import kotlinx.coroutines.test.TestCoroutineDispatcher
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.setMain
+import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -13,12 +21,15 @@ import org.mockito.kotlin.mock
 import org.mockito.kotlin.never
 import org.mockito.kotlin.verify
 
+@ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
-class ParametersViewModelTest {
+class ParametersViewModelTest{
 
 	@Rule
 	@JvmField
 	val testExecutor = InstantTaskExecutorRule()
+
+	private val testDispatcher = TestCoroutineDispatcher()
 
 	private lateinit var viewModel: ParametersViewModel
 	private val stateObserver: Observer<ParametersState> = mock()
@@ -32,7 +43,16 @@ class ParametersViewModelTest {
 
 	@Before
 	fun setUp() {
+		Dispatchers.setMain(testDispatcher)
+
 		viewModel = ParametersViewModel()
+	}
+
+	@ObsoleteCoroutinesApi
+	@After
+	fun tearDown() {
+		Dispatchers.resetMain()
+		testDispatcher.cleanupTestCoroutines()
 	}
 
 	@Test
@@ -140,23 +160,23 @@ class ParametersViewModelTest {
 	}
 
 	@Test
-	fun `WHEN calculate EXPECT show loan calculation results`() {
-		viewModel.changeSum("200000")
-		viewModel.changePeriod("24")
-		viewModel.changeRate("12")
+	fun `WHEN calculate EXPECT show loan calculation results`() = runBlockingTest {
+			viewModel.changeSum("200000")
+			viewModel.changePeriod("24")
+			viewModel.changeRate("12")
 
-		viewModel.state.observeForever(stateObserver)
-		clearInvocations(stateObserver)
+			viewModel.state.observeForever(stateObserver)
+			clearInvocations(stateObserver)
 
-		viewModel.calculate()
+			viewModel.calculate()
 
-		val expectedState = contentStata.copy(
-			sum = "200000",
-			period = "24",
-			rate = "12",
-			monthAmount = MonthAmountSubState.Visible(value = "9414,69")
-		)
+			val expectedState = contentStata.copy(
+				sum = "200000",
+				period = "24",
+				rate = "12",
+				monthAmount = MonthAmountSubState.Visible(value = "9414,69")
+			)
 
-		verify(stateObserver).onChanged(expectedState)
-	}
+			verify(stateObserver).onChanged(expectedState)
+		}
 }

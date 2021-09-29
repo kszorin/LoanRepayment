@@ -1,5 +1,6 @@
 package ru.kszorin.loanrepayment.shared_loan.domain.usecase
 
+import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -13,7 +14,7 @@ internal class CalculatePaymentUsecaseTest {
 	private val usecase = CalculatePaymentsUsecase()
 
 	@Test
-	fun `WHEN calculate payment EXPECT loan payment`() {
+	fun `WHEN calculate payment EXPECT loan payment`() = runBlocking {
 		val s = 200000.0
 		val rate = 12.0
 		val p = rate / 100 / 12
