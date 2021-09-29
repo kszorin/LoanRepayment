@@ -3,6 +3,8 @@ package ru.kszorin.loanrepayment.parameters.impl.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
 import ru.kszorin.loanrepayment.loan.api.domain.usecase.CalculatePaymentsUsecase
 
 class ParametersViewModel : ViewModel() {
@@ -57,10 +59,15 @@ class ParametersViewModel : ViewModel() {
 
             if (sum != null && period != null && rate != null) {
                 _state.value = ParametersState.Calculation
-                val calculatePaymentsUsecase = CalculatePaymentsUsecase()
-                val result = calculatePaymentsUsecase(sum, period, rate).amount
-                val roundedResultString = String.format("%.2f", result)
-                _state.value = contentState.copy(monthAmount = MonthAmountSubState.Visible(roundedResultString))
+                println("CalculationState")
+                viewModelScope.launch {
+                    println("CoroutineScope")
+                    val calculatePaymentsUsecase = CalculatePaymentsUsecase()
+                    val result = calculatePaymentsUsecase(sum, period, rate).amount
+                    val roundedResultString = String.format("%.2f", result)
+                    _state.value = contentState.copy(monthAmount = MonthAmountSubState.Visible(roundedResultString))
+                    println("ContentState")
+                }
             }
         }
     }
