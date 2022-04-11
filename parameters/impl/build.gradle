@@ -1,20 +1,16 @@
-plugins {
-	id 'com.android.application'
-	id 'kotlin-android'
-}
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
 	compileSdkVersion 31
 	buildToolsVersion "30.0.3"
 
 	defaultConfig {
-		applicationId "ru.kszorin.loanrepayment"
 		minSdkVersion 23
 		targetSdkVersion 31
 		versionCode 1
 		versionName "1.0"
-
-		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 	}
 
 	buildTypes {
@@ -30,6 +26,7 @@ android {
 	kotlinOptions {
 		jvmTarget = JavaVersion.VERSION_11.toString()
 	}
+
 	buildFeatures {
 		// Enables Jetpack Compose for this module
 		compose true
@@ -40,11 +37,9 @@ android {
 }
 
 dependencies {
-
-	implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-	implementation 'androidx.core:core-ktx:1.6.0'
-	implementation 'androidx.appcompat:appcompat:1.3.1'
-	implementation 'com.google.android.material:material:1.4.0'
+	implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
+	implementation "androidx.lifecycle:lifecycle-livedata-core-ktx:2.3.1"
+	implementation "androidx.fragment:fragment-ktx:1.3.6"
 
 	implementation 'androidx.compose.ui:ui:1.0.2'
 	// Tooling support (Previews, etc.)
@@ -65,6 +60,8 @@ dependencies {
 
 	//modules
 	implementation project(path: ':loan-api')
-	implementation project(path: ':loan-impl')
-	implementation project(path: ':parameters-impl')
+
+	testImplementation "junit:junit:4.13.2"
+	testImplementation "org.mockito.kotlin:mockito-kotlin:3.2.0"
+	testImplementation "androidx.arch.core:core-testing:2.1.0"
 }
