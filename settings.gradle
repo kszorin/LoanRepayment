@@ -1,2 +1,11 @@
 rootProject.name = "LoanRepayment"
-include ':app'
+include(
+	':app',
+	':loan-api',
+	':loan-impl',
+	':parameters-impl',
+)
+
+project(':loan-api').projectDir = file('loan/api')
+project(':loan-impl').projectDir = file('loan/impl')
+project(':parameters-impl').projectDir = file('parameters/impl')

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="parameters_title">Параметры кредита</string>
+    <string name="sum">Сумма, руб.</string>
+    <string name="period">Срок, мес. </string>
+    <string name="rate">Процентная ставка, %</string>
+    <string name="calculate">Рассчитать платёж</string>
+    <string name="monthAmount">Месячный платёж</string>
+</resources>
