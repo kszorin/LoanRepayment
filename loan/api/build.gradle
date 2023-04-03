@@ -32,11 +32,10 @@ dependencies {
 	implementation project(path: ':loan-impl')
 
 	//coroutines
-	implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
-	implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
+	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$libraries.kotlinCoroutines"
+	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$libraries.kotlinCoroutines"
+	testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$libraries.kotlinCoroutinesTest"
 
-	testImplementation "junit:junit:4.13.2"
-	testImplementation "org.mockito.kotlin:mockito-kotlin:3.2.0"
-	testImplementation "org.mockito.kotlin:mockito-kotlin:3.2.0"
-	testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2"
+	testImplementation "junit:junit:$libraries.junit"
+	testImplementation "org.mockito.kotlin:mockito-kotlin:$libraries.mockitoKotlin"
 }
