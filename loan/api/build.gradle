@@ -4,33 +4,9 @@ apply plugin: 'kotlin-kapt'
 
 android {
 	compileSdkVersion application.supportedSdk
-	buildToolsVersion application.buildToolsVersion
-
-	defaultConfig {
-		minSdkVersion application.minSdk
-		targetSdkVersion application.supportedSdk
-		versionCode application.versionCode
-		versionName application.versionName
-	}
-
-	buildTypes {
-		release {
-			minifyEnabled false
-			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-		}
-	}
-	compileOptions {
-		sourceCompatibility JavaVersion.VERSION_11
-		targetCompatibility JavaVersion.VERSION_11
-	}
-	kotlinOptions {
-		jvmTarget = JavaVersion.VERSION_11.toString()
-	}
 }
 
 dependencies {
-	implementation project(path: ':loan-impl')
-
 	//coroutines
 	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$libraries.kotlinCoroutines"
 	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$libraries.kotlinCoroutines"
