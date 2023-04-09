@@ -3,14 +3,14 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
-	compileSdkVersion 31
-	buildToolsVersion "30.0.3"
+	compileSdkVersion application.supportedSdk
+	buildToolsVersion application.buildToolsVersion
 
 	defaultConfig {
-		minSdkVersion 23
-		targetSdkVersion 31
-		versionCode 1
-		versionName "1.0"
+		minSdkVersion application.minSdk
+		targetSdkVersion application.supportedSdk
+		versionCode application.versionCode
+		versionName application.versionName
 	}
 
 	buildTypes {

@@ -1,4 +1,12 @@
 ext {
+    application = [
+        'versionCode'      : 1,
+        'versionName'      : "1.0",
+        'supportedSdk'     : 33,
+        'minSdk'           : 23,
+        'buildToolsVersion': '33.0.1'
+    ]
+
     libraries = [
         'kotlin'                 : '1.8.0',
         'kotlinCoroutines'       : '1.6.4',
