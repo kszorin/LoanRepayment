@@ -3,40 +3,15 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
-	compileSdkVersion 30
-	buildToolsVersion "30.0.2"
-
-	defaultConfig {
-		minSdkVersion 23
-		targetSdkVersion 30
-		versionCode 1
-		versionName "1.0"
-	}
-
-	buildTypes {
-		release {
-			minifyEnabled false
-			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-		}
-	}
-	compileOptions {
-		sourceCompatibility JavaVersion.VERSION_11
-		targetCompatibility JavaVersion.VERSION_11
-	}
-	kotlinOptions {
-		jvmTarget = JavaVersion.VERSION_11.toString()
-	}
+	compileSdkVersion application.supportedSdk
 }
 
 dependencies {
-	implementation project(path: ':loan-impl')
-
 	//coroutines
-	implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
-	implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
+	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$libraries.kotlinCoroutines"
+	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$libraries.kotlinCoroutines"
+	testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$libraries.kotlinCoroutinesTest"
 
-	testImplementation "junit:junit:4.13.2"
-	testImplementation "org.mockito.kotlin:mockito-kotlin:3.2.0"
-	testImplementation "org.mockito.kotlin:mockito-kotlin:3.2.0"
-	testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2"
+	testImplementation "junit:junit:$libraries.junit"
+	testImplementation "org.mockito.kotlin:mockito-kotlin:$libraries.mockitoKotlin"
 }

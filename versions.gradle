@@ -1,0 +1,27 @@
+ext {
+    application = [
+        'versionCode'      : 1,
+        'versionName'      : "1.0",
+        'supportedSdk'     : 33,
+        'minSdk'           : 23,
+        'buildToolsVersion': '33.0.1'
+    ]
+
+    libraries = [
+        'kotlin'                 : '1.8.0',
+        'kotlinCoroutines'       : '1.6.4',
+        'kotlinCoroutinesTest'   : '1.5.2',
+
+        'androidxCore'           : '1.10.0',
+        'androidxAppCompat'      : '1.6.1',
+        'androidxActivityCompose': '1.7.0',
+        'androidxLifecycle'      : '2.6.1',
+        'androidxFragment'       : '1.5.6',
+
+        'googleMaterial'         : '1.8.0',
+        'compose'                : '1.4.1',
+
+        'junit'                  : '4.13.2',
+        'mockitoKotlin'          : '3.2.0',
+    ]
+}
