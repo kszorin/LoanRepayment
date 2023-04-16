@@ -13,6 +13,7 @@ ext {
         'kotlinCoroutinesTest'   : '1.5.2',
 
         'androidxCore'           : '1.10.0',
+        'androidxCoreTesting'    : '2.2.0',
         'androidxAppCompat'      : '1.6.1',
         'androidxActivityCompose': '1.7.0',
         'androidxLifecycle'      : '2.6.1',
