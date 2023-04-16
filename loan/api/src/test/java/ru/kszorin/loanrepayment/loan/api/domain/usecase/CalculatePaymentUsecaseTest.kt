@@ -11,9 +11,9 @@ import kotlin.math.pow
 
 @OptIn(ExperimentalCoroutinesApi::class)
 @RunWith(MockitoJUnitRunner::class)
-internal class CalculatePaymentUsecaseTest {
+internal class CalculatePaymentUseCaseTest {
 
-	private val usecase = CalculatePaymentsUsecase()
+	private val useCase = CalculatePaymentsUseCase()
 
 	@Test
 	fun `WHEN calculate payment EXPECT loan payment`() = runTest {
@@ -25,7 +25,7 @@ internal class CalculatePaymentUsecaseTest {
 		val xStr = "%.2f".format(x)
 		println("Expected:\ns = $s\np = $p\nn=$n\nx=$xStr")
 
-		val actual = usecase(
+		val actual = useCase(
 			sum = 200000.0,
 			period = 24,
 			rate = 12.0,

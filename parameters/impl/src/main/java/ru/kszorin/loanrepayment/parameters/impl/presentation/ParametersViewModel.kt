@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import ru.kszorin.loanrepayment.loan.api.domain.usecase.CalculatePaymentsUsecase
+import ru.kszorin.loanrepayment.loan.api.domain.usecase.CalculatePaymentsUseCase
 
 class ParametersViewModel : ViewModel() {
 
@@ -62,8 +62,8 @@ class ParametersViewModel : ViewModel() {
                 println("CalculationState")
                 viewModelScope.launch {
                     println("CoroutineScope")
-                    val calculatePaymentsUsecase = CalculatePaymentsUsecase()
-                    val result = calculatePaymentsUsecase(sum, period, rate).amount
+                    val calculatePaymentsUseCase = CalculatePaymentsUseCase()
+                    val result = calculatePaymentsUseCase(sum, period, rate).amount
                     val roundedResultString = String.format("%.2f", result)
                     _state.value = contentState.copy(monthAmount = MonthAmountSubState.Visible(roundedResultString))
                     println("ContentState")
