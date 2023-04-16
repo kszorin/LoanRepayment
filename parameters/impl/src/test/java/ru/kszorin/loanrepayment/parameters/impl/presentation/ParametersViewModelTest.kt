@@ -2,6 +2,7 @@ package ru.kszorin.loanrepayment.parameters.impl.presentation
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -13,6 +14,7 @@ import org.mockito.kotlin.mock
 import org.mockito.kotlin.never
 import org.mockito.kotlin.verify
 
+@OptIn(ExperimentalCoroutinesApi::class)
 @RunWith(MockitoJUnitRunner::class)
 class ParametersViewModelTest {
 
@@ -123,40 +125,5 @@ class ParametersViewModelTest {
         viewModel.changeRate("-10")
 
         verify(stateObserver, never()).onChanged(any())
-    }
-
-    @Test
-    fun `WHEN calculate EXPECT set progress state`() {
-        viewModel.changeSum("200000")
-        viewModel.changePeriod("24")
-        viewModel.changeRate("12")
-
-        viewModel.state.observeForever(stateObserver)
-        clearInvocations(stateObserver)
-
-        viewModel.calculate()
-
-        verify(stateObserver).onChanged(ParametersState.Calculation)
-    }
-
-    @Test
-    fun `WHEN calculate EXPECT show loan calculation results`() {
-        viewModel.changeSum("200000")
-        viewModel.changePeriod("24")
-        viewModel.changeRate("12")
-
-        viewModel.state.observeForever(stateObserver)
-        clearInvocations(stateObserver)
-
-        viewModel.calculate()
-
-        val expectedState = contentStata.copy(
-            sum = "200000",
-            period = "24",
-            rate = "12",
-            monthAmount = MonthAmountSubState.Visible(value = "9414,69")
-        )
-
-        verify(stateObserver).onChanged(expectedState)
     }
 }

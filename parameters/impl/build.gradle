@@ -38,7 +38,7 @@ dependencies {
 	//modules
 	implementation project(path: ':loan-api')
 
-	testImplementation "junit:junit:4.13.2"
-	testImplementation "org.mockito.kotlin:mockito-kotlin:3.2.0"
-	testImplementation "androidx.arch.core:core-testing:2.2.0"
+	testImplementation "junit:junit:$libraries.junit"
+	testImplementation "org.mockito.kotlin:mockito-kotlin:$libraries.mockitoKotlin"
+	testImplementation "androidx.arch.core:core-testing:$libraries.androidxCoreTesting"
 }
