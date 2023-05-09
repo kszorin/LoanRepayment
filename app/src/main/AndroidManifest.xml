@@ -3,6 +3,7 @@
 	package="ru.kszorin.loanrepayment">
 
 	<application
+		android:name="ru.kszorin.loanrepayment.app.LoanRepaymentApplication"
 		android:allowBackup="false"
 		android:icon="@mipmap/ic_launcher"
 		android:label="@string/app_name"
