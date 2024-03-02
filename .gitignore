@@ -16,10 +16,12 @@
 /.idea/assetWizardSettings.xml
 /.idea/vcs.xml
 /.idea/shelf
+/.idea/deploymentTargetDropDown.xml
+/.idea/kotlinc.xml
+/.idea/migrations.xml
 .DS_Store
 **/build
 /captures
 .externalNativeBuild
 .cxx
 local.properties
-
