@@ -5,6 +5,10 @@ apply plugin: 'kotlin-kapt'
 android {
 	compileSdkVersion application.supportedSdk
 
+	defaultConfig {
+		minSdkVersion application.minSdk
+	}
+
 	buildFeatures {
 		// Enables Jetpack Compose for this module
 		compose true
