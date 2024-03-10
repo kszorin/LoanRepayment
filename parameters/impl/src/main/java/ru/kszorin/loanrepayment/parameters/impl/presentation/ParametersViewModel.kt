@@ -6,8 +6,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import ru.kszorin.loanrepayment.loan.api.domain.usecase.CalculatePaymentsUseCase
+import javax.inject.Inject
 
-class ParametersViewModel : ViewModel() {
+class ParametersViewModel @Inject constructor(
+    private val calculatePaymentsUseCase: CalculatePaymentsUseCase,
+) : ViewModel() {
 
     private val _state: MutableLiveData<ParametersState> = MutableLiveData(ParametersState.Initial)
     val state: LiveData<ParametersState> = _state
@@ -62,7 +65,6 @@ class ParametersViewModel : ViewModel() {
                 println("CalculationState")
                 viewModelScope.launch {
                     println("CoroutineScope")
-                    val calculatePaymentsUseCase = CalculatePaymentsUseCase()
                     val result = calculatePaymentsUseCase(sum, period, rate).amount
                     val roundedResultString = String.format("%.2f", result)
                     _state.value = contentState.copy(monthAmount = MonthAmountSubState.Visible(roundedResultString))

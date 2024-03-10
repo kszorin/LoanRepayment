@@ -1,6 +1,7 @@
 plugins {
 	id 'com.android.application'
 	id 'kotlin-android'
+	id 'kotlin-kapt'
 }
 
 android {
@@ -38,6 +39,10 @@ dependencies {
 	implementation "androidx.appcompat:appcompat:$libraries.androidxAppCompat"
 
 	implementation "com.google.android.material:material:$libraries.googleMaterial"
+
+	//dagger
+	implementation "com.google.dagger:dagger:$libraries.dagger"
+	kapt "com.google.dagger:dagger-compiler:$libraries.dagger"
 
 	//modules
 	implementation project(path: ':loan-api')

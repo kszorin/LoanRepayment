@@ -5,13 +5,3 @@ apply plugin: 'kotlin-kapt'
 android {
 	compileSdkVersion application.supportedSdk
 }
-
-dependencies {
-	//coroutines
-	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$libraries.kotlinCoroutines"
-	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$libraries.kotlinCoroutines"
-	testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$libraries.kotlinCoroutinesTest"
-
-	testImplementation "junit:junit:$libraries.junit"
-	testImplementation "org.mockito.kotlin:mockito-kotlin:$libraries.mockitoKotlin"
-}

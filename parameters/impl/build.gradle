@@ -39,6 +39,10 @@ dependencies {
 	testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$libraries.kotlinCoroutines"
 	//endregion
 
+	//dagger
+	implementation "com.google.dagger:dagger:$libraries.dagger"
+	kapt "com.google.dagger:dagger-compiler:$libraries.dagger"
+
 	//modules
 	implementation project(path: ':loan-api')
 
