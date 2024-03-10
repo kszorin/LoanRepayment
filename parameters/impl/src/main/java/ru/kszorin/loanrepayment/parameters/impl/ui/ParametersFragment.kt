@@ -7,13 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import ru.kszorin.loanrepayment.parameters.impl.di.ParametersFragmentComponentProvider
 import ru.kszorin.loanrepayment.parameters.impl.presentation.ParametersViewModel
+import javax.inject.Inject
 
 class ParametersFragment : Fragment() {
 
-    private val parametersViewModel: ParametersViewModel by viewModels()
+    @Inject
+    lateinit var parametersViewModel: ParametersViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

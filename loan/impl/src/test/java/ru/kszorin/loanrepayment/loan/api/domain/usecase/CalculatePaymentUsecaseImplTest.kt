@@ -7,13 +7,14 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
 import ru.kszorin.loanrepayment.loan.api.domain.model.Payment
+import ru.kszorin.loanrepayment.loan.impl.domain.usecase.CalculatePaymentsUseCaseImpl
 import kotlin.math.pow
 
 @OptIn(ExperimentalCoroutinesApi::class)
 @RunWith(MockitoJUnitRunner::class)
 internal class CalculatePaymentUseCaseTest {
 
-	private val useCase = CalculatePaymentsUseCase()
+	private val useCase = CalculatePaymentsUseCaseImpl()
 
 	@Test
 	fun `WHEN calculate payment EXPECT loan payment`() = runTest {
